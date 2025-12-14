@@ -1,0 +1,9 @@
+export { HeroSection } from "./HeroSection";
+export { ProblemSection } from "./ProblemSection";
+export { SolutionSection } from "./SolutionSection";
+export { BenefitsSection } from "./BenefitsSection";
+export { TrustSection } from "./TrustSection";
+export { PricingSection } from "./PricingSection";
+export { ComparisonSection } from "./ComparisonSection";
+export { TestimonialsSection } from "./TestimonialsSection";
+export { CTASection } from "./CTASection";
