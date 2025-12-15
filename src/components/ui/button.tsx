@@ -21,7 +21,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // Custom variants for AutomateX
         hero: "bg-gradient-primary text-primary-foreground shadow-lg hover:shadow-xl hover:opacity-95 active:scale-[0.98] px-8 py-4 text-base",
-        "hero-secondary": "bg-background text-foreground border border-border shadow-sm hover:bg-muted hover:shadow-md px-8 py-4 text-base",
+        "hero-secondary": "bg-background text-primary border border-border shadow-sm hover:bg-muted hover:shadow-md px-8 py-4 text-base",
         cta: "bg-gradient-primary text-primary-foreground shadow-glow hover:shadow-xl hover:opacity-95 active:scale-[0.98]",
       },
       size: {
