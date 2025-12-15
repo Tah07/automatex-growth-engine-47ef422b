@@ -1,10 +1,17 @@
+import { SEOHead } from "@/components/seo/SEOHead";
 import { PageLayout } from "@/components/layout";
 import { motion } from "framer-motion";
 
 export default function Terms() {
   return (
     <PageLayout>
-      <section className="section-padding bg-gradient-hero">
+      <SEOHead
+        title="Terms of Service | AutomateX"
+        description="AutomateX terms of service. Read our service agreement, payment terms, and user responsibilities for AI automation services."
+        canonical="https://automatex.ai/terms"
+      />
+
+      <header className="section-padding bg-gradient-hero">
         <div className="container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -19,10 +26,10 @@ export default function Terms() {
             </p>
           </motion.div>
         </div>
-      </section>
+      </header>
 
-      <section className="section-padding bg-background">
-        <div className="container-narrow prose prose-slate max-w-none">
+      <main className="section-padding bg-background">
+        <article className="container-narrow prose prose-slate max-w-none">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,90 +37,74 @@ export default function Terms() {
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
-            <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                Agreement to Terms
-              </h2>
+            <section>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-4">Agreement to Terms</h2>
               <p className="text-muted-foreground">
-                By accessing or using AutomateX services, you agree to be bound by 
+                By accessing or using AutomateX AI automation services, you agree to be bound by 
                 these Terms of Service. If you disagree with any part of these terms, 
                 you may not access our services.
               </p>
-            </div>
+            </section>
 
-            <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                Services Description
-              </h2>
+            <section>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-4">Services Description</h2>
               <p className="text-muted-foreground">
                 AutomateX provides AI-powered automation services for client outreach, 
                 follow-up communications, and appointment scheduling. We connect to 
                 your Google account to send emails and manage calendar events on your 
                 behalf.
               </p>
-            </div>
+            </section>
 
-            <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                User Responsibilities
-              </h2>
-              <p className="text-muted-foreground mb-4">
-                You agree to:
-              </p>
+            <section>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-4">User Responsibilities</h2>
+              <p className="text-muted-foreground mb-4">You agree to:</p>
               <ul className="list-disc list-inside text-muted-foreground space-y-2">
                 <li>Provide accurate account information</li>
-                <li>Use our services in compliance with applicable laws</li>
+                <li>Use our services in compliance with applicable laws including CAN-SPAM</li>
                 <li>Not use our services for spam or illegal purposes</li>
                 <li>Maintain the security of your account credentials</li>
               </ul>
-            </div>
+            </section>
 
-            <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                Payment Terms
-              </h2>
+            <section>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-4">Payment Terms</h2>
               <p className="text-muted-foreground">
                 Setup fees are due upon agreement. Monthly maintenance fees are billed 
                 in advance. Due to the custom nature of our work, setup fees are 
                 non-refundable once work has begun. You may cancel monthly maintenance 
                 with 30 days notice.
               </p>
-            </div>
+            </section>
 
-            <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                Limitation of Liability
-              </h2>
+            <section>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-4">Limitation of Liability</h2>
               <p className="text-muted-foreground">
                 AutomateX shall not be liable for any indirect, incidental, special, 
                 consequential, or punitive damages resulting from your use of our 
                 services. Our total liability shall not exceed the amount paid by you 
                 for our services in the preceding 12 months.
               </p>
-            </div>
+            </section>
 
-            <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                Termination
-              </h2>
+            <section>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-4">Termination</h2>
               <p className="text-muted-foreground">
                 Either party may terminate this agreement with 30 days written notice. 
                 Upon termination, we will disconnect from your Google account and cease 
                 all automation activities.
               </p>
-            </div>
+            </section>
 
-            <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                Contact
-              </h2>
+            <section>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-4">Contact</h2>
               <p className="text-muted-foreground">
                 For questions about these Terms, contact us at support@automatex.ai.
               </p>
-            </div>
+            </section>
           </motion.div>
-        </div>
-      </section>
+        </article>
+      </main>
     </PageLayout>
   );
 }

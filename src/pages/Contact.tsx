@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { SEOHead } from "@/components/seo/SEOHead";
 import { PageLayout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +8,25 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Shield, Clock, CheckCircle2 } from "lucide-react";
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact AutomateX",
+  "description": "Book a free AI automation demo or send us a message. We help small businesses in USA and Canada automate lead generation.",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "AutomateX",
+    "email": "support@automatex.ai",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "support@automatex.ai",
+      "areaServed": ["US", "CA"],
+      "availableLanguage": "English"
+    }
+  }
+};
 
 export default function Contact() {
   const { toast } = useToast();
@@ -45,8 +65,15 @@ export default function Contact() {
 
   return (
     <PageLayout>
+      <SEOHead
+        title="Contact Us | Book a Free AI Automation Demo"
+        description="Book a free AI automation demo or contact AutomateX. Get answers to your questions about done-for-you lead generation and email automation. Serving USA & Canada businesses."
+        canonical="https://automatex.ai/contact"
+        structuredData={contactSchema}
+      />
+
       {/* Hero */}
-      <section className="bg-gradient-hero section-padding">
+      <header className="bg-gradient-hero section-padding">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -55,18 +82,19 @@ export default function Contact() {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Let's Talk About Your Growth
+              Let's Talk About Your Business Growth
             </h1>
             <p className="text-lg text-muted-foreground">
               Book a free demo or send us a message. No pressure, just a 
-              conversation about how AI automation can help your business.
+              conversation about how AI automation can help your business grow.
             </p>
           </motion.div>
         </div>
-      </section>
+      </header>
 
       {/* Contact Form & Info */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" className="sr-only">Contact Form and Information</h2>
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Form */}
@@ -76,10 +104,10 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="card-elevated">
-                <h2 className="font-display text-2xl font-bold text-foreground mb-6">
+              <article className="card-elevated">
+                <h3 className="font-display text-2xl font-bold text-foreground mb-6">
                   Send Us a Message
-                </h2>
+                </h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Your Name</Label>
@@ -90,6 +118,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      aria-required="true"
                     />
                   </div>
 
@@ -103,6 +132,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      aria-required="true"
                     />
                   </div>
 
@@ -118,15 +148,16 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">How can we help?</Label>
+                    <Label htmlFor="message">How can we help with your automation needs?</Label>
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="Tell us about your business and what you're looking to achieve..."
+                      placeholder="Tell us about your business and what you're looking to achieve with AI automation..."
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      aria-required="true"
                     />
                   </div>
 
@@ -144,7 +175,7 @@ export default function Contact() {
                 <p className="text-sm text-muted-foreground mt-4 text-center">
                   We typically respond within 24 hours.
                 </p>
-              </div>
+              </article>
             </motion.div>
 
             {/* Info & Booking */}
@@ -156,30 +187,31 @@ export default function Contact() {
               className="space-y-8"
             >
               {/* Book a Call */}
-              <div className="card-bordered">
+              <article className="card-bordered">
                 <h3 className="font-display text-xl font-semibold text-foreground mb-4">
-                  Prefer a Call?
+                  Prefer a Demo Call?
                 </h3>
                 <p className="text-muted-foreground mb-6">
                   Book a free 15-minute demo call. We'll discuss your needs and 
-                  show you exactly how AutomateX can work for your business.
+                  show you exactly how AutomateX AI automation can work for your business.
                 </p>
                 <Button variant="default" className="w-full" size="lg" asChild>
                   <a 
                     href="https://calendly.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    aria-label="Book a free demo call (opens in new tab)"
                   >
                     Book Free Demo Call
                   </a>
                 </Button>
-              </div>
+              </article>
 
               {/* Contact Info */}
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
+                <address className="not-italic flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-primary" />
+                    <Mail className="w-5 h-5 text-primary" aria-hidden="true" />
                   </div>
                   <div>
                     <h4 className="font-display font-semibold text-foreground">
@@ -192,11 +224,11 @@ export default function Contact() {
                       support@automatex.ai
                     </a>
                   </div>
-                </div>
+                </address>
 
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-primary" />
+                    <Clock className="w-5 h-5 text-primary" aria-hidden="true" />
                   </div>
                   <div>
                     <h4 className="font-display font-semibold text-foreground">
@@ -210,9 +242,9 @@ export default function Contact() {
               </div>
 
               {/* Trust Message */}
-              <div className="bg-muted/50 rounded-xl p-6">
+              <aside className="bg-muted/50 rounded-xl p-6">
                 <div className="flex items-start gap-4">
-                  <Shield className="w-6 h-6 text-primary flex-shrink-0" />
+                  <Shield className="w-6 h-6 text-primary flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h4 className="font-display font-semibold text-foreground mb-2">
                       Your Information is Safe
@@ -224,14 +256,14 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </aside>
 
               {/* What to Expect */}
               <div>
                 <h4 className="font-display font-semibold text-foreground mb-4">
                   What to Expect
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-3" role="list">
                   {[
                     "Quick response within 24 hours",
                     "No pushy sales tactics",
@@ -239,7 +271,7 @@ export default function Contact() {
                     "Clear pricing with no hidden fees",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-3 text-muted-foreground">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
                       <span>{item}</span>
                     </li>
                   ))}

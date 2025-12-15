@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { SEOHead } from "@/components/seo/SEOHead";
 import { PageLayout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { 
@@ -18,8 +19,8 @@ const detailedSteps = [
   {
     step: 1,
     icon: Link2,
-    title: "Connect Your Google Account",
-    description: "Start by securely connecting your Gmail account using Google's official OAuth system.",
+    title: "Connect Your Google Account Securely",
+    description: "Start by securely connecting your Gmail account using Google's official OAuth 2.0 system for business automation.",
     details: [
       "No passwords stored — ever",
       "Industry-standard OAuth 2.0 security",
@@ -30,24 +31,24 @@ const detailedSteps = [
   {
     step: 2,
     icon: Bot,
-    title: "We Configure Your AI System",
-    description: "Our team sets up your custom automation based on your business needs.",
+    title: "We Configure Your AI Automation System",
+    description: "Our automation experts set up your custom AI workflow based on your business needs and target audience.",
     details: [
       "Define your ideal customer profile",
       "Create personalized email templates",
-      "Set up targeting criteria",
-      "Configure response triggers",
+      "Set up lead targeting criteria",
+      "Configure AI response triggers",
     ],
   },
   {
     step: 3,
     icon: MessageSquare,
-    title: "AI Handles Outreach & Replies",
-    description: "The AI sends personalized messages and intelligently handles responses.",
+    title: "AI Handles Lead Outreach & Follow-ups",
+    description: "The AI automation sends personalized messages and intelligently handles responses and follow-up sequences.",
     details: [
       "Personalized emails sent from YOUR Gmail",
       "Natural, human-like conversations",
-      "Smart follow-up sequences",
+      "Smart automated follow-up sequences",
       "Handles objections and questions",
     ],
   },
@@ -55,7 +56,7 @@ const detailedSteps = [
     step: 4,
     icon: Calendar,
     title: "Qualified Leads Book Automatically",
-    description: "Interested prospects are guided to book directly into your calendar.",
+    description: "Interested prospects are guided to book appointments directly into your calendar without manual effort.",
     details: [
       "Seamless calendar integration",
       "Automated scheduling links",
@@ -67,28 +68,68 @@ const detailedSteps = [
 
 const faqs = [
   {
-    question: "How long does setup take?",
-    answer: "Most setups are completed within 1-2 business days. We handle everything — you just need to connect your Google account and approve the configuration.",
+    question: "How long does AI automation setup take?",
+    answer: "Most automation setups are completed within 1-2 business days. We handle everything — you just need to connect your Google account and approve the configuration.",
   },
   {
-    question: "Will this look like spam?",
-    answer: "No. Emails are sent from your real Gmail address with personalized content. We follow best practices to ensure high deliverability and avoid spam folders.",
+    question: "Will automated emails look like spam?",
+    answer: "No. Emails are sent from your real Gmail address with personalized content. We follow email deliverability best practices to ensure high inbox placement and avoid spam folders.",
   },
   {
     question: "What if leads reply with questions?",
     answer: "The AI handles common questions and objections automatically. For complex queries, it gracefully hands off to you or schedules a call.",
   },
   {
-    question: "Can I see what's being sent?",
+    question: "Can I monitor what's being sent?",
     answer: "Absolutely. You have full visibility into all communications. Every email goes through your Gmail, so you can see everything in your Sent folder.",
   },
 ];
 
+const howItWorksSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How AutomateX AI Automation Works",
+  "description": "A simple 4-step process to automate your client acquisition with AI-powered lead generation and email automation.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Connect Your Google Account",
+      "text": "Securely link your Gmail using Google OAuth 2.0. No passwords stored, full control retained."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "AI Configuration",
+      "text": "Our team configures your custom AI automation based on your business needs and target audience."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Automated Outreach",
+      "text": "AI sends personalized emails and handles follow-ups automatically from your Gmail account."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Automatic Booking",
+      "text": "Qualified leads book directly into your calendar. You just show up and close the deal."
+    }
+  ]
+};
+
 export default function HowItWorks() {
   return (
     <PageLayout>
+      <SEOHead
+        title="How AI Automation Works | AutomateX"
+        description="Learn how AutomateX AI automation handles lead generation, email outreach, and appointment booking in 4 simple steps. No technical skills required. Setup in 1-2 days."
+        canonical="https://automatex.ai/how-it-works"
+        structuredData={howItWorksSchema}
+      />
+
       {/* Hero */}
-      <section className="bg-gradient-hero section-padding">
+      <header className="bg-gradient-hero section-padding">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -97,22 +138,23 @@ export default function HowItWorks() {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              How AutomateX Works
+              How Our AI Automation Works
             </h1>
             <p className="text-lg text-muted-foreground">
-              A simple, transparent process that puts qualified leads on autopilot. 
-              No technical skills required.
+              A simple, transparent process that puts your client acquisition on autopilot. 
+              No technical skills required — setup in just 1-2 days.
             </p>
           </motion.div>
         </div>
-      </section>
+      </header>
 
       {/* Process Steps */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background" aria-labelledby="process-heading">
+        <h2 id="process-heading" className="sr-only">AI Automation Process Steps</h2>
         <div className="container-narrow">
           <div className="space-y-16">
             {detailedSteps.map((step, index) => (
-              <motion.div
+              <motion.article
                 key={step.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -131,12 +173,12 @@ export default function HowItWorks() {
                         <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
                           {step.step}
                         </div>
-                        <step.icon className="w-8 h-8 text-primary" />
+                        <step.icon className="w-8 h-8 text-primary" aria-hidden="true" />
                       </div>
-                      <ul className="space-y-3">
+                      <ul className="space-y-3" role="list">
                         {step.details.map((detail) => (
                           <li key={detail} className="flex items-start gap-3">
-                            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
                             <span className="text-sm text-foreground">{detail}</span>
                           </li>
                         ))}
@@ -147,21 +189,21 @@ export default function HowItWorks() {
 
                 {/* Content */}
                 <div className="flex-1 text-center lg:text-left">
-                  <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4">
                     {step.title}
-                  </h2>
+                  </h3>
                   <p className="text-muted-foreground text-lg">
                     {step.description}
                   </p>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
       {/* Key Benefits */}
-      <section className="section-padding bg-muted/30">
+      <section className="section-padding bg-muted/30" aria-labelledby="benefits-heading">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -170,18 +212,18 @@ export default function HowItWorks() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Why This Approach Works
+            <h2 id="benefits-heading" className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Why Our AI Automation Approach Works
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Shield, title: "Secure & Compliant", desc: "Google OAuth, no stored passwords, CAN-SPAM compliant" },
-              { icon: Zap, title: "Fast Setup", desc: "Go live in 1-2 days, not weeks of configuration" },
-              { icon: Clock, title: "24/7 Operation", desc: "AI works around the clock while you sleep" },
+              { icon: Shield, title: "Secure & CAN-SPAM Compliant", desc: "Google OAuth 2.0, no stored passwords, full CAN-SPAM compliance" },
+              { icon: Zap, title: "Fast 1-2 Day Setup", desc: "Go live in 1-2 business days, not weeks of configuration" },
+              { icon: Clock, title: "24/7 AI Operation", desc: "AI automation works around the clock while you sleep" },
             ].map((item, index) => (
-              <motion.div
+              <motion.article
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -190,20 +232,20 @@ export default function HowItWorks() {
                 className="card-elevated text-center"
               >
                 <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-primary" />
+                  <item.icon className="w-6 h-6 text-primary" aria-hidden="true" />
                 </div>
                 <h3 className="font-display font-semibold text-foreground mb-2">
                   {item.title}
                 </h3>
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
       {/* FAQs */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background" aria-labelledby="faq-heading">
         <div className="container-narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -212,14 +254,14 @@ export default function HowItWorks() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Common Questions
+            <h2 id="faq-heading" className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Common AI Automation Questions
             </h2>
           </motion.div>
 
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <motion.div
+              <motion.article
                 key={faq.question}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -231,14 +273,14 @@ export default function HowItWorks() {
                   {faq.question}
                 </h3>
                 <p className="text-muted-foreground text-sm">{faq.answer}</p>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-primary">
+      <section className="section-padding bg-primary" aria-labelledby="cta-heading">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -247,11 +289,11 @@ export default function HowItWorks() {
             transition={{ duration: 0.5 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary-foreground mb-6">
-              Ready to Get Started?
+            <h2 id="cta-heading" className="font-display text-3xl sm:text-4xl font-bold text-primary-foreground mb-6">
+              Ready to Automate Your Lead Generation?
             </h2>
             <p className="text-primary-foreground/80 mb-8">
-              Book a free demo and see how AutomateX can work for your business.
+              Book a free demo and see how AutomateX AI automation can work for your business.
             </p>
             <Button 
               size="xl" 
@@ -260,7 +302,7 @@ export default function HowItWorks() {
             >
               <Link to="/contact">
                 Book Free Demo
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Link>
             </Button>
           </motion.div>
